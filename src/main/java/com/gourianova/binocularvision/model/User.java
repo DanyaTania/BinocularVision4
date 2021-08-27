@@ -14,12 +14,14 @@ public class User implements Serializable {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(nullable = false, updatable = false)
     private int id;
+    private BigDecimal balance;
+    private LocalDate create_time;
+    private String first_name;
+    private String last_name;
     private String login;
     private String password;
-    private String firstName;
-    private String lastName;
-    private BigDecimal balance;
-    private int roleId;
+
+    private int roles_id;
     //TODO: ask difference @Entity
 //    private User user;
 //    @OneToMany(
@@ -29,29 +31,29 @@ public class User implements Serializable {
 //            fetch = FetchType.LAZY
 //    )
 //    private List<Role> roles = new ArrayList<>();
-    private LocalDate create_time;
+
 
     public User() {
     }
 
     public User(int id,String login, String password, String firstName, String lastName,  BigDecimal balance, int roleId, LocalDate create_time) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.first_name = firstName;
+        this.last_name = lastName;
         this.login = login;
         this.password = password;
         this.balance = balance;
-        this.roleId = roleId;
+        this.roles_id = roleId;
         this.create_time=create_time;
     }
 
     public User(String login, String password, String firstName, String lastName,  BigDecimal balance, int roleId, LocalDate create_time) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.first_name = firstName;
+        this.last_name = lastName;
         this.login = login;
         this.password = password;
         this.balance = balance;
-        this.roleId = roleId;
+        this.roles_id = roleId;
         this.create_time=create_time;
     }
     public int getId() {
@@ -63,19 +65,19 @@ public class User implements Serializable {
     }
 
     public String getFirstName() {
-        return firstName;
+        return first_name;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.first_name = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return last_name;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.last_name = lastName;
     }
 
     public String getLogin() {
@@ -103,11 +105,11 @@ public class User implements Serializable {
     }
 
     public int getRoleId() {
-        return roleId;
+        return roles_id;
     }
 
     public void setRoleId(int roleId) {
-        this.roleId = roleId;
+        this.roles_id = roleId;
     }
 
     public LocalDate getCreate_time() {
@@ -141,12 +143,12 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", firstName='" + first_name + '\'' +
+                ", lastName='" + last_name + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", balance=" + balance +
-                ", roleId=" + roleId +
+                ", roleId=" + roles_id +
                 ", create_time="+ create_time+
                 "} " + super.toString();
     }
