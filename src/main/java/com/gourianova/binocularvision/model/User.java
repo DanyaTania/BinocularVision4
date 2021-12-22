@@ -11,32 +11,48 @@ import java.util.Objects;
 @Entity
 public class User implements Serializable {
     @Id
+    private int id;
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(nullable = false, updatable = false)
-    private int id;
     private BigDecimal balance;
     private LocalDate create_time;
     private String first_name;
     private String last_name;
     private String login;
     private String password;
-
     private int roles_id;
-    //TODO: ask difference @Entity
-//    private User user;
-//    @OneToMany(
-//            mappedBy = "user",
-//            orphanRemoval = true,
-//            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-//            fetch = FetchType.LAZY
-//    )
-//    private List<Role> roles = new ArrayList<>();
-
+  
 
     public User() {
     }
+    public User(BigDecimal balance,LocalDate create_time, String firstName, String lastName,  String login, String password,  int roleId, int id) {
+        {
+            this.id = id;
+            this.first_name = firstName;
+            this.last_name = lastName;
+            this.login = login;
+            this.password = password;
+            this.balance = balance;
+            this.roles_id = roleId;
+            this.create_time=create_time;}
+    }
+    public User(BigDecimal balance,LocalDate create_time, String firstName, String lastName,  String login, String password,  int roleId) {
+        {
 
-    public User(int id,String login, String password, String firstName, String lastName,  BigDecimal balance, int roleId, LocalDate create_time) {
+            this.first_name = firstName;
+            this.last_name = lastName;
+            this.login = login;
+            this.password = password;
+            this.balance = balance;
+            this.roles_id = roleId;
+            this.create_time=create_time;}
+    }
+   // public User ( BigDecimal balance, LocalDate now, String tatiana, String gourianova, String tg, String tatiana1, int i, int i1 ) {
+    //}
+
+
+
+   /* public User(int id,String login, String password, String firstName,   BigDecimal balance, int roleId, LocalDate create_time) {
         this.id = id;
         this.first_name = firstName;
         this.last_name = lastName;
@@ -46,7 +62,7 @@ public class User implements Serializable {
         this.roles_id = roleId;
         this.create_time=create_time;
     }
-
+*/
     public User(String login, String password, String firstName, String lastName,  BigDecimal balance, int roleId, LocalDate create_time) {
         this.first_name = firstName;
         this.last_name = lastName;
@@ -56,6 +72,8 @@ public class User implements Serializable {
         this.roles_id = roleId;
         this.create_time=create_time;
     }
+
+
     public int getId() {
         return id;
     }
