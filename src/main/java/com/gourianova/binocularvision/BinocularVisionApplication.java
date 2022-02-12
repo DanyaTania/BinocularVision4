@@ -13,27 +13,28 @@ import java.time.LocalDate;
 @SpringBootApplication
 public class BinocularVisionApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BinocularVisionApplication.class, args);
+	public static void main ( String[] args ) {
+		SpringApplication.run (BinocularVisionApplication.class, args);
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner( UserRepo userRepo) {
+	CommandLineRunner commandLineRunner ( UserRepo userRepo ) {
 		return args -> {
-			User u1 = new User(
-					BigDecimal.valueOf(215.06),
-					LocalDate.now(),
+			User u1 = new User (
+					BigDecimal.valueOf (215.06),
+					LocalDate.now (),
 					"Tatiana",
 					"Gourianova",
 					"tg",
 					"Tatiana",
 					2
-
 			);
-			userRepo.save(u1);
-			//userRepository.save(u1);
+
+			userRepo.save (u1);
 
 
-		};
-}
+
+			};
+	}
+
 }
